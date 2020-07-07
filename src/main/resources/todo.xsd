@@ -1,0 +1,41 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" 
+            xmlns:tns="http://evgenjin.com"
+            targetNamespace="http://evgenjin.com"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="getToDoRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:ID"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getToDoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="country" type="tns:todo_object"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:complexType name="todo_object">
+        <xs:sequence>
+            <xs:element name="id" type="xs:ID"/>
+            <xs:element name="date" type="xs:date"/>
+            <xs:element name="title" type="xs:string"/>
+            <xs:element name="discription" type="xs:string"/>
+            <xs:element name="priority" type="tns:priority"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="priority">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="LOW"/>
+            <xs:enumeration value="MIDDLE"/>
+            <xs:enumeration value="HIGH"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>
